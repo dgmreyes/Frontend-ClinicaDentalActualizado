@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Navbar() {
-    const scrollSection = (sectionId) => {
-        document.getElementById(sectionId).scrollIntoView({
-            behavior: "smooth"
-        })
-    }
+  const scrollSection = (sectionId) => {
+    document.getElementById(sectionId).scrollIntoView({
+      behavior: "smooth"
+    })
+  }
   const [open, setOpen] = useState(false);
-  const handleClick = () => {window.location.href = "/src/pages/Dashboard" };
+  const navigate = useNavigate();
+  const handleClick = () => { navigate("/login"); };
 
   return (
     <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
