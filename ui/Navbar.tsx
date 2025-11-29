@@ -1,16 +1,13 @@
+'use client'
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 
 export default function Navbar() {
-  const scrollSection = (sectionId) => {
-    document.getElementById(sectionId).scrollIntoView({
-      behavior: "smooth"
-    })
-  }
+  const router = useRouter();
+    const scrollSection = (sectionId: string): void => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
-  const handleClick = () => { navigate("/login"); };
 
   return (
     <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
@@ -21,8 +18,7 @@ export default function Navbar() {
         </h2>
         
         <ul className="hidden md:flex gap-8 text-gray-700">
-          <li><button  
-          onClick={()=> scrollSection("Inicio")}>Inicio</button></li>
+          <li><button onClick={()=> scrollSection("Inicio")}>Inicio</button></li>
           <li><button onClick={()=> scrollSection("Nosotros")}>Sobre Nosotros</button></li>
           <li><button onClick={()=> scrollSection("Atencion")}>Servicios</button></li>
           <li><button onClick={()=> scrollSection("Equipo")}>Nuestro Equipo</button></li>
@@ -33,8 +29,8 @@ export default function Navbar() {
           <button className="border border-blue-600 px-4 py-1 rounded-lg text-blue-600">
             Agendar Cita
           </button>
-          <button onClick={handleClick}  className="bg-blue-600 text-white px-4 py-1 rounded-lg">
-            Iniciar Sesión 
+          <button className="bg-blue-600 text-white px-4 py-1 rounded-lg" onClick={() => router.push('/signup')}>
+            Iniciar Sesión
           </button>
         </div>
 
